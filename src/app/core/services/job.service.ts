@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JobDto } from '../data/job.dto';
 import { Job } from '../models/job.model';
-import { map, Observable } from 'rxjs';
+import { combineLatest, map, Observable } from 'rxjs';
 import { JobDetails } from '../models/job-details.model';
 import { JobDetailsDto } from '../data/job-details.dto';
 import { Company } from '../models/company.model';
@@ -24,6 +24,12 @@ export class JobService {
       .pipe(
         map(dtos => dtos.map(JobService.jobDtoToModel))
       );
+  }
+
+  public getFavorites(): Observable<Job[]> {
+    return combineLatest([this.getAll(), this.favoriteService.getAll()]).pipe(
+      map(([jobs, favorites]) => jobs.filter(job => favorites.indexOf(job.id) !== -1))
+    );
   }
 
   public getDetails(id: number): Observable<JobDetails> {

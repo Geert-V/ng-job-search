@@ -1,19 +1,26 @@
 import { Injectable } from '@angular/core';
-import { Observable, ReplaySubject, Subject } from 'rxjs';
+import { map, Observable, ReplaySubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FavoriteService {
   private readonly localStorageKey = 'favorites';
-  private readonly subjects: { [id: number]: Subject<boolean> } = {};
+  private readonly favoritesSubject = new ReplaySubject<number[]>(1);
 
   constructor() {
-    this.initSubjects();
+    const favorites = this.getFavorites();
+    this.favoritesSubject.next(favorites);
   }
 
   public get(jobId: number): Observable<boolean> {
-    return this.getSubject(jobId);
+    return this.favoritesSubject.pipe(
+      map(favorites => favorites.indexOf(jobId) !== -1)
+    );
+  }
+
+  public getAll(): Observable<number[]> {
+    return this.favoritesSubject;
   }
 
   public toggle(jobId: number) {
@@ -28,28 +35,7 @@ export class FavoriteService {
     }
 
     this.setFavorites(favorites);
-    this.getSubject(jobId).next(!isFavorite);
-  }
-
-  private initSubjects(): void {
-    this
-      .getFavorites()
-      .forEach(jobId => {
-        const subject = new ReplaySubject<boolean>(1);
-        subject.next(true);
-        this.subjects[jobId] = subject;
-      });
-  }
-
-  private getSubject(jobId: number): Subject<boolean> {
-    if (this.subjects[jobId]) {
-      return this.subjects[jobId];
-    } else {
-      const subject = new ReplaySubject<boolean>(1);
-      subject.next(false);
-      this.subjects[jobId] = subject;
-      return subject;
-    }
+    this.favoritesSubject.next(favorites);
   }
 
   private getFavorites(): number[] {
