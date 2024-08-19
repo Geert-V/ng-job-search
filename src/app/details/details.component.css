@@ -1,0 +1,50 @@
+.jobDetails {
+    display: flex;
+    flex-direction: column;
+    max-width: 75%;
+    margin: auto;
+}
+
+h2 {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    margin-top: 2em;
+    margin-bottom: 1em;
+
+    img {
+        width: 100px;
+    }
+}
+
+.name {
+    font-weight: bold;
+    width: 100px;
+}
+
+.description {
+    margin-top: 2em;
+    margin-bottom: 1em;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+}
+
+.colum {
+    display: flex;
+    flex-direction: column;
+}
+
+.badge {
+    background-color: darkslateblue;
+    border-radius: 20px;
+    padding: 0 15px;
+}

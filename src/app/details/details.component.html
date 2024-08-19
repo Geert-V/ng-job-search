@@ -1,0 +1,34 @@
+@if (job$ | async; as job) {
+    <div class="jobDetails">
+        <a [routerLink]="backUrl">&lt; Back</a>
+        <div class="header">
+            <img [src]="job.company.logoUrl"/>
+            <div class="column">
+                <h2>{{ job.company.name }} - {{ job.title }}</h2>
+                <div class="row">
+                    @for (type of job.types; track type) {
+                        <span class="badge">{{ type }}</span>
+                    }
+                    @for (industry of job.industries; track industry) {
+                        <span class="badge" [innerHTML]="industry"></span>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <span class="name">Publish date:</span>
+            {{ job.publishDate | date }}
+        </div>
+        <div class="row">
+            <span class="name">Location:</span>
+            {{ job.location }}
+        </div>
+        <div class="row">
+            <span class="name">Reference:</span>
+            {{ job.reference }}
+        </div>
+        <div class="description" [innerHTML]="job.description"></div>
+    </div>
+} @else {
+    <p>Loading job, please wait...</p>
+}

@@ -1,6 +1,6 @@
 <div class="job">
     <img [src]="job.company.logoUrl"/>
-    <a class="jobInfo">
+    <a [routerLink]="[job.id]" class="jobInfo">
         <h2>{{ job.title }}</h2>
         <span>Company: {{ job.company.name }}</span>
         <span>Reference: {{ job.reference }}</span>

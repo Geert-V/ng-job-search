@@ -3,12 +3,14 @@ import { Job } from '../../core/models/job.model';
 import { FavoriteService } from '../../core/services/favorite.service';
 import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-job-item',
   standalone: true,
   imports: [
-    AsyncPipe
+    AsyncPipe,
+    RouterLink
   ],
   templateUrl: './job-item.component.html',
   styleUrl: './job-item.component.css'
