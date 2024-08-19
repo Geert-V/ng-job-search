@@ -24,6 +24,17 @@ span.icon-star {
     gap: 1em;
 }
 
+.row {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+}
+
+.name {
+    font-weight: bold;
+    width: 100px;
+}
+
 @media only screen and (max-width: 750px) {
     .jobList {
         width: 100%;

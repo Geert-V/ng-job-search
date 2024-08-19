@@ -2,10 +2,16 @@
     <img [src]="job.company.logoUrl"/>
     <a [routerLink]="[job.id]" class="jobInfo">
         <h2>{{ job.title }}</h2>
-        <span>Company: {{ job.company.name }}</span>
-        <span>Reference: {{ job.reference }}</span>
+        <div class="row">
+            <span class="name">Company:</span>
+            {{ job.company.name }}
+        </div>
+        <div class="row">
+            <span class="name">Reference:</span>
+            {{ job.reference }}
+        </div>
     </a>
-    @if (showFavoriteIcon) {
+    @if (enableFavorite) {
         <span class="icon-star" [id]="'star-' + job.id" [class.active]="isFavorite$ | async" (click)="toggleFavorite()"></span>
     }
 </div>

@@ -17,7 +17,7 @@ import { RouterLink } from '@angular/router';
 })
 export class JobItemComponent implements OnInit {
   @Input({required: true}) job!: Job;
-  @Input() showFavoriteIcon = false;
+  @Input() enableFavorite = false;
 
   public isFavorite$!: Observable<boolean>;
 

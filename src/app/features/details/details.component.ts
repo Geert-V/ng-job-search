@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { JobService } from '../core/services/job.service';
-import { JobDetails } from '../core/models/job-details.model';
+import { JobService } from '../../core/services/job.service';
+import { JobDetails } from '../../core/models/job-details.model';
 import { Observable } from 'rxjs';
 import { AsyncPipe, DatePipe } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';

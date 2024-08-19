@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Job } from '../core/models/job.model';
-import { JobService } from '../core/services/job.service';
+import { Job } from '../../core/models/job.model';
+import { JobService } from '../../core/services/job.service';
 import { AsyncPipe } from '@angular/common';
-import { JobItemComponent } from '../components/job-item/job-item.component';
+import { JobItemComponent } from '../../components/job-item/job-item.component';
 
 @Component({
   selector: 'app-favorites',
