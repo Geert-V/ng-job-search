@@ -1,0 +1,38 @@
+.job {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2em;
+    padding: 0 1em;
+        
+    > img {
+        width: 50px;
+        height: 50px;
+    }
+
+    > .jobInfo {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+
+        &:hover {
+            cursor: pointer;
+            color: darkgray;
+            text-decoration: none;
+        }
+
+        > h2 {
+            margin: 0;
+        }
+    }
+
+    > .icon-star {
+        &:hover {
+            cursor: pointer;
+        }
+
+        &.active {
+            background-color: yellow;
+        }
+    }
+}

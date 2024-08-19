@@ -6,13 +6,17 @@ import { map, Observable } from 'rxjs';
 import { JobDetails } from '../models/job-details.model';
 import { JobDetailsDto } from '../data/job-details.dto';
 import { Company } from '../models/company.model';
+import { FavoriteService } from './favorite.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class JobService {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(
+    private httpClient: HttpClient,
+    private favoriteService: FavoriteService) {
+  }
 
   public getAll(): Observable<Job[]> {
     return this.httpClient
