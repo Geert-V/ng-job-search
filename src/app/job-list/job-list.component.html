@@ -1,0 +1,14 @@
+<div class="jobList">
+    <hr/>
+    @for (job of jobs$ | async; track job.id) {
+        <a class="job">
+            <img [src]="job.company.logoUrl"/>
+            <div class="jobInfo">
+                <h2>{{ job.title }}</h2>
+                <span>Company: {{ job.company.name }}</span>
+                <span>Reference: {{ job.reference }}</span>
+            </div>
+        </a>
+        <hr/>
+    }
+</div>
